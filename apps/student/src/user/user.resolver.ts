@@ -1,16 +1,15 @@
 import { Args, Query, ResolveField, Resolver } from '@nestjs/graphql';
 import { Auth } from './model/auth.model';
 import { UserService } from './user.service';
-import { Config } from 'src/config';
 import { UseGuards } from '@nestjs/common';
-import { AuthGuard } from 'src/authentication/auth.guard';
+import { StudentAuthGuard } from 'apps/student/src/authentication/auth.guard';
 
 @Resolver('Auth')
 export class UserResolver {
   constructor(private authService: UserService) {}
 
   @Query((returns) => String)
-  @UseGuards(new AuthGuard)
+  // @UseGuards(StudentAuthGuard)
   GetHelloWorld() {
     return this.authService.SendHelloWorld();
   }

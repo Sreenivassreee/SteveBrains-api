@@ -4,11 +4,15 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { DirectiveLocation, GraphQLDirective } from 'graphql';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './authentication/auth.module';
-
+import { MongooseModule } from '@nestjs/mongoose';
 @Module({
   imports: [
     AuthModule,
     UserModule,
+    MongooseModule.forRoot(
+      'mongodb+srv://ksreenivas:gnCbMXRyShjSm0U2@cluster0.elwasho.mongodb.net/?retryWrites=true&w=majority',
+    ),
+    
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       autoSchemaFile: 'schema.gql',
@@ -25,5 +29,4 @@ import { AuthModule } from './authentication/auth.module';
     }),
   ],
 })
-
 export class AppModule {}
