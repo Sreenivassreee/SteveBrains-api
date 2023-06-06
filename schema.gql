@@ -1,9 +1,0 @@
-# ------------------------------------------------------
-# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
-# ------------------------------------------------------
-
-directive @upper on FIELD_DEFINITION
-
-type Query {
-  GetHelloWorld: String!
-}
